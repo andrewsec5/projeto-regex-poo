@@ -1,0 +1,14 @@
+FUNCOES
+    Cadastrar pessoa fisica/juridica -> nome, CPF/CNPJ, telefone, email, dataNascimento/dataFundação e senha (censurar)
+
+    Validar todos esses dados antes de aceitar
+
+    Opção de mudar a senha (deve digitar antes)
+
+    Criar opção de logs
+        expor log pre-estabelecido e catalogar eles por tipo/nivel
+        extrair e catalogar IPs de tentativa de login e dividir em sucesso e falha
+
+    Criar opção de visualizar clientes
+        expor lista completa (pre estabelecida) e colocar opção de ver cliente por CPF único (censurar menos 3 ultimos)
+
