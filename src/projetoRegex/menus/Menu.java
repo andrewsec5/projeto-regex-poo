@@ -2,7 +2,7 @@ package projetoRegex.menus;
 
 public interface Menu {
 
-    public void exibirMenu();
+    public static void exibirMenu() {}
 
 
 }
