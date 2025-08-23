@@ -12,7 +12,22 @@ public class Administrador {
     public Administrador(String nome, String email){
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public boolean isPessoaFisica() {
+        return pessoaFisica;
     }
 
     public void setSenha(String senha) {

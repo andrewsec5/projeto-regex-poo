@@ -1,9 +1,7 @@
 FUNCOES
-    Cadastrar pessoa fisica/juridica -> nome, CPF/CNPJ, telefone, email, dataNascimento/dataFundação e senha (censurar)
+    Cadastrar pessoa fisica/juridica -> nome, CPF/CNPJ, telefone, email, dataNascimento/dataFundação e senha
 
     Validar todos esses dados antes de aceitar
-
-    Opção de mudar a senha (deve digitar antes)
 
     Criar opção de logs
         expor log pre-estabelecido e catalogar eles por tipo/nivel
@@ -12,3 +10,6 @@ FUNCOES
     Criar opção de visualizar clientes
         expor lista completa (pre estabelecida) e colocar opção de ver cliente por CPF único (censurar menos 3 ultimos)
 
+    Criar configuração de usuario
+
+    Exigir senha para acessar logs e configurações

@@ -2,27 +2,53 @@ package projetoRegex.ferramentas;
 
 import projetoRegex.administrador.Administrador;
 
+import java.util.InputMismatchException;
+
 public class Validador {
 
-    public static boolean validarEmail(String email){
-        if(email.matches("\\w+@\\w+\\.(com|net|org|pt|edu|gov)(.br)?"))return true;
+    public static boolean validarEmail(String email) {
+        //VALIDAR EMAIL
+        if (email.matches("\\w+@\\w+\\.(com|net|org|pt|edu|gov)(.br)?")) return true;
         else return false;
     }
 
-    public static boolean validarDoc(String doc, Administrador adm){
-        if(doc.matches("\\d{3}\\.?\\d{3}\\.?\\d{3}-?\\d{2}")){
+    public static boolean validarDoc(String doc, Administrador adm) {
+        //VALIDA CPF/CNPJ E DETERMINA O ADMINISTRADOR COMO PESSOA FISICA OU JURIDICA
+        if (doc.matches("\\d{3}(?:\\.?|-?)\\d{3}(?:\\.?|-?)\\d{3}(?:\\.?|-?)\\d{2}")) {
             adm.setPessoaFisica(true);
             return true;
         }
-        if(doc.matches("\\d{2}\\.?\\d{3}\\.?\\d{3}/?\\d{4}-?\\d{2}")){
+        if (doc.matches("\\d{2}\\.?\\d{3}\\.?\\d{3}/?\\d{4}-?\\d{2}")) {
             adm.setPessoaFisica(false);
             return true;
         }
-    return false;
+        return false;
     }
 
-    public static boolean validarSenha(String senha){
-    //SENHA FORTE
+    public static boolean validarSenha(String senha) {
+        //VERIFICAR SENHA FORTE
+        return senha.matches(".*[A-Z].*")                       //VERIFICA SE POSSUI LETRA MAISCULA
+                && senha.matches(".*[!@#$%^&*()\\-/_+=].*")     //VERIFICA SE POSSUI CARACTERE ESPECIAL
+                && senha.matches(".*\\d+.*")                    //VERIFICA SE POSSUI NUMERO
+                && senha.length() >= 8;                               //VERIFICA SE TEM TAMANHO DE PELO MENOS 8 DIGITOS
+    }
+
+    public static byte validarEscolha(byte max) {
+        byte escolha = 0;
+        boolean validacao = false;
+        //VALIDA ESCOLHA DE OPCAO EM MENUS
+        while (!validacao) {
+            try {
+                escolha = Entrada.scanner.nextByte();
+                if (escolha < 0 || escolha > max) {
+                    System.out.println("Opção inválida!");
+                }else validacao = true;
+            } catch (InputMismatchException e) {
+                Entrada.scanner.nextLine();
+                System.out.println("Entrada inválida!");
+            }
+        }
+        return escolha;
     }
 
 }

@@ -7,5 +7,7 @@ public class Main {
 
         MenuInicial.cadastrarAdm();
 
+        MenuInicial.exibirMenu();
+
     }
 }
