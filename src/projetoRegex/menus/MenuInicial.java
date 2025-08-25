@@ -113,7 +113,7 @@ public class MenuInicial implements Menu {
     public static void exibirMenu(Administrador adm) {
         byte escolha;
         boolean manterMenu = true;
-
+        //Exibe menu principal -> necessita de senha para acessar configurações de adm
         while(manterMenu) {
             System.out.println("=======MENU-PRINCIPAL=======");
             System.out.println("1 - Verificar logs");

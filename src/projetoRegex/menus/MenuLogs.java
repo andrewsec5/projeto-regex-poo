@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class MenuLogs implements Menu{
-
+    //arquivo de logs
     private static final String CAMINHO_LOG = "src/projetoRegex/resources/logs_sistema.csv";
 
     public static void exibirMenu() {
         byte escolha;
         boolean manterMenu = true;
-
+        //Menu principal de logs
         while(manterMenu) {
             System.out.println("=======MENU-LOGS=======");
             System.out.println("1 - Imprimir logs (24h)");
@@ -33,6 +33,7 @@ public class MenuLogs implements Menu{
     }
 
     private static void imprimirLogs() {
+        //Le e imprime o arquivo de logs
         System.out.println("-------Logs do dia 21/08/2025-------");
         try (BufferedReader buffRead = new BufferedReader(new FileReader(CAMINHO_LOG))) {
             String linha;

@@ -11,7 +11,7 @@ public class MenuConfig implements Menu {
     public static void exibirMenu(Administrador adm) {
         byte escolha;
         boolean manterMenu = true;
-
+        //Menu principal das configurações, ele varia de acordo com quantos dados estão completos e se o adm é pessoa fisica ou juridica
         while (manterMenu) {
             System.out.println("=======CONFIGURAÇÕES DE ADMINISTRADOR=======");
             if (Objects.isNull(adm.getTelefone()) || adm.getTelefone().isBlank()) System.out.println("1 - Cadastrar número de telefone");
@@ -30,7 +30,6 @@ public class MenuConfig implements Menu {
             System.out.print("Opção: ");
             escolha = Validador.validarEscolha((byte) 4);
             Entrada.scanner.nextLine();
-
             switch (escolha) {
                 case 1 -> alterarNumero(adm);
                 case 2 -> alterarData(adm);
@@ -46,7 +45,7 @@ public class MenuConfig implements Menu {
     private static void alterarNumero(Administrador adm){
         String numero;
         boolean validacaoNumero = false;
-
+        //Metodo para alteracao/cadastro do numero telefonico
             if (Objects.isNull(adm.getTelefone()) || adm.getTelefone().isBlank()) System.out.println("Sem número de telefone cadastrado");
             else System.out.println("Número cadastrado: " + adm.getTelefone());
         while(!validacaoNumero) {
@@ -62,7 +61,7 @@ public class MenuConfig implements Menu {
     private static void alterarData(Administrador adm){
         String data;
         boolean validacaoData = false;
-
+        //Metodo para alteracao/cadastro da data de nascimento/fundacao
         while(!validacaoData){
             if(adm.isPessoaFisica()){
                 if(Objects.isNull(adm.getDataNascimentoFundacao()) || adm.getDataNascimentoFundacao().isBlank()) System.out.println("Nenhuma data de nascimento cadastrada");
@@ -89,7 +88,7 @@ public class MenuConfig implements Menu {
         boolean validacaoSenhaNova = false;
         boolean validacaoDoc = false;
         boolean validacaoSenha = false;
-
+        //Necessita de autenticação mais robusta, por ser configuração sensivel -> altera a senha
         while(!validacaoDoc) {
             if (adm.isPessoaFisica())
                 System.out.print("Confirme os 3 primeiros dígitos do seu CPF (Digite 0 para cancelar): ");
@@ -122,7 +121,7 @@ public class MenuConfig implements Menu {
         String novoDoc;
         boolean validacaoDoc = false;
         boolean validacaoDocNovo = false;
-
+        //Necessita de autenticação mais robusta, por ser configuração sensivel -> altera o CPF/CNPJ
         while(!validacaoDoc) {
             if (adm.isPessoaFisica())
                 System.out.print("Confirme os 3 primeiros dígitos do seu CPF (Digite 0 para cancelar): ");

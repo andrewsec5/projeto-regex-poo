@@ -14,10 +14,12 @@ public class Validador {
 
     public static boolean validarDoc(String doc, Administrador adm) {
         //VALIDA CPF/CNPJ E DETERMINA O ADMINISTRADOR COMO PESSOA FISICA OU JURIDICA
+        //Valida CPF
         if (doc.matches("\\d{3}(?:\\.?|-?)\\d{3}(?:\\.?|-?)\\d{3}(?:\\.?|-?)\\d{2}")) {
             adm.setPessoaFisica(true);
             return true;
         }
+        //Valida CNPJ
         if (doc.matches("\\d{2}\\.?\\d{3}\\.?\\d{3}/?\\d{4}-?\\d{2}")) {
             adm.setPessoaFisica(false);
             return true;
@@ -52,10 +54,12 @@ public class Validador {
     }
 
     public static boolean validarTelefone(String numero){
+        //Valida numero de telefone (celular ou fixo)
         return numero.matches("\\(?\\d{2}\\)?\\s?\\d{4,5}[.-]?\\d{4}");
     }
 
     public static boolean validarData(String data){
+        //Valida formatação da data
         return data.matches("\\d{2}(?:\\.?|/?|-?)\\d{2}(?:\\.?|/?|-?)\\d{4}");
     }
 
