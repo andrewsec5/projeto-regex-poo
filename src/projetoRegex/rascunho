@@ -7,9 +7,6 @@ FUNCOES
         expor log pre-estabelecido e catalogar eles por tipo/nivel
         extrair e catalogar IPs de tentativa de login e dividir em sucesso e falha
 
-    Criar opção de visualizar clientes
-        expor lista completa (pre estabelecida) e colocar opção de ver cliente por CPF único (censurar menos 3 ultimos)
-
     Criar configuração de usuario
 
     Exigir senha para acessar logs e configurações

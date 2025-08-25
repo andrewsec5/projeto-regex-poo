@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class MenuLogs {
+public class MenuLogs implements Menu{
 
     private static final String CAMINHO_LOG = "src/projetoRegex/resources/logs_sistema.csv";
 

@@ -26,6 +26,18 @@ public class Administrador {
         return email;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getDataNascimentoFundacao() {
+        return dataNascimentoFundacao;
+    }
+
     public boolean isPessoaFisica() {
         return pessoaFisica;
     }

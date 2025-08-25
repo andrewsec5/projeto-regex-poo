@@ -4,15 +4,14 @@ import projetoRegex.administrador.Administrador;
 import projetoRegex.ferramentas.Entrada;
 import projetoRegex.ferramentas.Validador;
 
-import java.util.InputMismatchException;
-
 public class MenuInicial implements Menu {
 
-    public static void cadastrarAdm() {
+    public static Administrador cadastrarAdm() {
         String nome;
         String email;
         String doc;
         String senha;
+        Administrador adm = null;
         boolean confirmacaoCadastro = false;
         while (!confirmacaoCadastro) {
             //CHAMA METODOS QUE RETORNAM OS DADOS PARA CADASTRO DOS CLIENTES
@@ -20,7 +19,7 @@ public class MenuInicial implements Menu {
             nome = entradaNome();
             email = entradaEmail();
             //CRIA OBJETO ADM COM NOME E EMAIL
-            Administrador adm = new Administrador(nome, email);
+            adm = new Administrador(nome, email);
             doc = entradaDoc(adm);
             //INICIALIZA O CPF/CNPJ E, DENTRO DO METODO, DEFINE SE É PESSOA FÍSICA OU JURÍDICA
             adm.setCpfCnpj(doc);
@@ -30,6 +29,7 @@ public class MenuInicial implements Menu {
             //CONFIRMA CADASTRO E MOSTRA DADOS
             confirmacaoCadastro = confirmarCadastro(adm);
         }
+        return adm;
     }
 
     private static String entradaNome() {
@@ -110,22 +110,32 @@ public class MenuInicial implements Menu {
         else return true;
     }
 
-    public static void exibirMenu() {
+    public static void exibirMenu(Administrador adm) {
         byte escolha;
         boolean manterMenu = true;
 
         while(manterMenu) {
             System.out.println("=======MENU-PRINCIPAL=======");
             System.out.println("1 - Verificar logs");
-            System.out.println("2 - Visualizar clientes");
-            System.out.println("3 - Configurações de usuário");
+            System.out.println("2 - Configurações de usuário");
             System.out.println("0 - Encerrar");
             System.out.print("Opção: ");
-            escolha = Validador.validarEscolha((byte) 3);
+            escolha = Validador.validarEscolha((byte) 2);
             switch (escolha){
                 case 1 -> MenuLogs.exibirMenu();
-                case 2 -> System.out.println("Função clientes");
-                case 3 -> System.out.println("Configurar usuário");
+                case 2 -> {
+                    String tentarSenha;
+                    boolean tentativa = true;
+                    Entrada.scanner.nextLine();
+                    while(tentativa) {
+                        System.out.println("Insira sua senha para acessar (Digite 0 para cancelar): ");
+                        tentarSenha = Entrada.scanner.nextLine();
+                        if(tentarSenha.equals("0")) return;
+                        if(tentarSenha.equals(adm.getSenha())) tentativa = false;
+                        else System.out.println("Senha incorreta!");
+                    }
+                    MenuConfig.exibirMenu(adm);
+                }
                 case 0 -> {
                     System.out.println("Encerrando aplicação...");
                     return;
