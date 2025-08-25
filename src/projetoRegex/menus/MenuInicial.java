@@ -56,6 +56,8 @@ public class MenuInicial implements Menu {
     private static String entradaDoc(Administrador adm) {
         String doc = null;
         boolean validacaoDoc = false;
+        String regexFormatacaoCpf = "(\\d{3})(\\d{3})(\\d{3})(\\d{2})";
+        String regexFormatacaoCnpj = "(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})";
         //ENTRADA E VALIDACAO DE CPF/CNPJ, E DEFINE SE ADM É PESSOA FISICA OU JURIDICA, PARA CADASTRO
         while (!validacaoDoc) {
             System.out.print("CPF/CNPJ: ");
@@ -63,8 +65,8 @@ public class MenuInicial implements Menu {
             if (Validador.validarDoc(doc, adm)) validacaoDoc = true;
             else System.out.println("CPF/CNPJ inválido!");
         }
-        if (adm.isPessoaFisica()) doc = doc.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4");
-        if (!adm.isPessoaFisica()) doc = doc.replaceFirst("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})", "$1.$2.$3/$4-$5");
+        if (adm.isPessoaFisica()) doc = doc.replaceFirst(regexFormatacaoCpf, "$1.$2.$3-$4");
+        if (!adm.isPessoaFisica()) doc = doc.replaceFirst(regexFormatacaoCnpj, "$1.$2.$3/$4-$5");
         return doc;
     }
 
